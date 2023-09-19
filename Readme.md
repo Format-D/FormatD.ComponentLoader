@@ -23,16 +23,18 @@ Releases and compatibility:
 
 ### Usage
 
-Place the `FormatD.ComponentLoader:WindowComponentRegistryScriptTag` in the header of your document prototype.
+The `FormatD.ComponentLoader:WindowComponentRegistryScriptTag` is placed automatically in the head of Neos.Neos:Page.
 
-Use the prototypes in your components: 
+#### Use the prototypes in your components
+
 ```fusion
 prototype(Vendor.Website:MyComponent) < prototype(FormatD.ComponentLoader:Component) {
      ...
 }
 ```
 
-Create an component manager: 
+#### Create a component manager:
+
 ```typescript
 export default class MyComponentManager extends AbstractComponentManager {
 	initialize(domSection: HTMLElement) {
@@ -41,7 +43,8 @@ export default class MyComponentManager extends AbstractComponentManager {
 }
 ```
 
-Include the corresponding files:
+#### Include the corresponding files
+
 ```typescript
 import {componentLoader} from ".../Vendor.Package/Fusion/ComponentLoader";
 

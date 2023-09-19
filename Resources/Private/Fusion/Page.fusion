@@ -1,0 +1,6 @@
+prototype(Neos.Neos:Page) {
+    head {
+        formatDComponentLoader = FormatD.ComponentLoader:WindowComponentRegistryScriptTag
+        @position.formatDComponentLoader = 'last'
+    }
+}
