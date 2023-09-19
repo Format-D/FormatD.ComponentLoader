@@ -1,0 +1,19 @@
+prototype(FormatD.ComponentLoader:WindowComponentRegistryScriptTag) < prototype(Neos.Fusion:DataStructure) {
+	components = ${[]}
+	register = '###register###'
+
+	@process.stringifyToJson {
+		expression = ${Json.stringify(value)}
+		@position = 'start'
+	}
+
+	@process.replaceMethodMarker {
+		expression = ${FD.ComponentLoader.replaceMethodMarker(value, 'register', '(...names) => __ComponentLoaderComponentRegistry.components.push(...names)')}
+		@position = 'after stringifyToJson'
+	}
+
+	@process.augmentWithScriptTag {
+		expression = ${'<script>window.__ComponentLoaderComponentRegistry = '+value+'</script>'}
+		@position = 'after replaceMethodMarker'
+	}
+}

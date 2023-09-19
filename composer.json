@@ -1,0 +1,19 @@
+{
+  "description": "Automatic JavaScript loading for Fusion Components",
+  "type": "neos-package",
+  "name": "formatd/componentloader",
+  "license": "MIT",
+  "require": {
+    "neos/neos": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "FormatD\\ComponentLoader\\": "Classes/"
+    }
+  },
+  "extra": {
+    "neos": {
+      "package-key": "FormatD.ComponentLoader"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+prototype(FormatD.ComponentLoader:Component) < prototype(Neos.Fusion:Component) {
+	@propTypes {
+		__fusionObjectName = ${PropTypes.string}
+	}
+
+	__fusionObjectName = ${FD.ComponentLoader.getFusionObjectName(this)}
+
+	renderer.@process.augmentWithComponentRegistration {
+		expression = FormatD.ComponentLoader:Meta.Processor.Component {
+			fusionObjectName = ${props.__fusionObjectName}
+		}
+		@position = 'end'
+	}
+}
+
+prototype(FormatD.ComponentLoader:ContentComponent) < prototype(Neos.Neos:ContentComponent) {
+	@propTypes {
+		__fusionObjectName = ${PropTypes.string}
+	}
+
+	__fusionObjectName = ${FD.ComponentLoader.getFusionObjectName(this)}
+
+	renderer.@process.augmentWithComponentRegistration {
+		expression = FormatD.ComponentLoader:Meta.Processor.Component {
+			fusionObjectName = ${props.__fusionObjectName}
+		}
+		@position = 'end'
+	}
+}
+
+prototype(FormatD.ComponentLoader:Meta.Processor.Component) < prototype(Neos.Fusion:Component) {
+	fusionObjectName = null
+	componentRegistryName = '__ComponentLoaderComponentRegistry'
+
+	renderer = afx`
+		{value}
+		<script @if.hasFusionObjectName={!!props.fusionObjectName} data-register-component={props.fusionObjectName} >
+			window.{props.componentRegistryName}.register("{props.fusionObjectName}");
+		</script>
+	`
+}
