@@ -1,0 +1,10 @@
+prototype(FormatD.ComponentLoader:WindowComponentContext) < prototype(Neos.Fusion:DataStructure) {
+    Context = Neos.Fusion:DataStructure {
+        isBackend = '###isBackend###'
+        isProduction = ${false}
+        isDevelopment = ${true}
+    }
+    @process.1 = ${Json.stringify(value)}
+    @process.8 = ${FD.ComponentLoader.replaceMethodMarker(value, 'isBackend', '() => '+(documentNode.context.inBackend ? 'true' : 'false'))}
+    @process.100 = ${'<script>window.fdds = '+value+'</script>'}
+}

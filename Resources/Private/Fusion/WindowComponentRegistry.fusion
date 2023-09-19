@@ -1,4 +1,4 @@
-prototype(FormatD.ComponentLoader:WindowComponentRegistryScriptTag) < prototype(Neos.Fusion:DataStructure) {
+prototype(FormatD.ComponentLoader:WindowComponentRegistry) < prototype(Neos.Fusion:DataStructure) {
 	components = ${[]}
 	register = '###register###'
 

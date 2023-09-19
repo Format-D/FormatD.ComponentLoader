@@ -1,6 +1,8 @@
 prototype(Neos.Neos:Page) {
     head {
-        formatDComponentLoader = FormatD.ComponentLoader:WindowComponentRegistryScriptTag
-        @position.formatDComponentLoader = 'last'
+        formatDComponentLoaderContext = FormatD.ComponentLoader:WindowComponentContext
+        formatDComponentLoaderContext.@position = 'before formatDComponentLoaderRegistry'
+        formatDComponentLoaderRegistry = FormatD.ComponentLoader:WindowComponentRegistry
+        formatDComponentLoaderRegistry.@position = 'last'
     }
 }
