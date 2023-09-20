@@ -13,16 +13,12 @@ class ComponentLoaderHelper implements ProtectedContextAwareInterface
 	/**
 	 * @throws \ReflectionException
 	 */
-	public function getFusionObjectName(mixed $prototypeName): ?string
-	{
-		if (!is_string($prototypeName)) {
-			return null;
-		}
-
-		$reflection = new \ReflectionClass($prototypeName);
+	public function getFusionObjectName(mixed $fusionObject): string
+	{ 
+		$reflection = new \ReflectionClass($fusionObject);
 		$property = $reflection->getProperty('fusionObjectName');
 		$property->setAccessible(true);
-		return $property->getValue($reflection);
+		return $property->getValue($fusionObject);
 	}
 
 	public function replaceMethodMarker(string $value, string $markerName, string $rawMethod, $markerIndicator = '###'): string
