@@ -1,7 +1,5 @@
 prototype(Neos.Neos:Page) {
     head {
-        formatDComponentLoaderContext = FormatD.ComponentLoader:WindowComponentContext
-        formatDComponentLoaderContext.@position = 'before formatDComponentLoaderRegistry'
         formatDComponentLoaderRegistry = FormatD.ComponentLoader:WindowComponentRegistry
         formatDComponentLoaderRegistry.@position = 'end'
     }

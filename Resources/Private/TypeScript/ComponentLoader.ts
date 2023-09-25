@@ -20,7 +20,12 @@ declare global {
 	interface Window {
 		__ComponentLoaderComponentRegistry: {
 			register: (...componentKeys: string[]) => void,
-			components: string[]
+			components: string[],
+			context: {
+				isBackend: () => boolean
+				isProduction: boolean
+        		isDevelopment: boolean
+			}
 		}
 	}
 }
@@ -169,7 +174,7 @@ export class ComponentLoader {
 	}
 
 	static ListenOnInitializeBackendReload(listener: EventListener) {
-		if (window['fdds']?.Context?.isBackend()) {
+		if (window.__ComponentLoaderComponentRegistry.context.isBackend()) {
 			document.addEventListener(EventTypes.ReloadBackend, listener);
 		}
 	}

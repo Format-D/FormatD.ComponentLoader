@@ -1,19 +1,30 @@
 prototype(FormatD.ComponentLoader:WindowComponentRegistry) < prototype(Neos.Fusion:DataStructure) {
 	components = ${[]}
 	register = '###register###'
+	context = Neos.Fusion:DataStructure {
+		isBackend = '###isBackend###'
+		isProduction = ${false}
+		isDevelopment = ${true}
+    }
+        
 
 	@process.stringifyToJson {
 		expression = ${Json.stringify(value)}
 		@position = 'start'
 	}
 
-	@process.replaceMethodMarker {
+	@process.replaceMethodMarkerRegister {
 		expression = ${FD.ComponentLoader.replaceMethodMarker(value, 'register', '(...names) => __ComponentLoaderComponentRegistry.components.push(...names)')}
 		@position = 'after stringifyToJson'
 	}
 
+	@process.replaceMethodMarkerContextIsBackend {
+		expression = ${FD.ComponentLoader.replaceMethodMarker(value, 'isBackend', '() => '+(documentNode.context.inBackend ? 'true' : 'false'))}
+		@position = 'after replaceMethodMarkerRegister'
+	}
+
 	@process.augmentWithScriptTag {
 		expression = ${'<script>window.__ComponentLoaderComponentRegistry = '+value+'</script>'}
-		@position = 'after replaceMethodMarker'
+		@position = 'after replaceMethodMarkerContextIsBackend'
 	}
 }

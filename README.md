@@ -23,7 +23,7 @@ Releases and compatibility:
 
 ### Usage
 
-The `FormatD.ComponentLoader:WindowComponentRegistry` and `FormatD.ComponentLoader:WindowComponentContext` is placed automatically in the head of Neos.Neos:Page.
+The `FormatD.ComponentLoader:WindowComponentRegistry` is placed automatically in the head of Neos.Neos:Page.
 
 #### Use the prototypes in your components
 
