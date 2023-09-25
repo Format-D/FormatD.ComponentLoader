@@ -25,6 +25,8 @@ Releases and compatibility:
 
 The `FormatD.ComponentLoader:WindowComponentRegistry` is placed automatically in the head of Neos.Neos:Page.
 
+Create an typescript-include-alias for `@packages` which directs to the composer packages folder. 
+
 #### Use the prototypes in your components
 
 ```fusion
@@ -36,6 +38,8 @@ prototype(Vendor.Website:MyComponent) < prototype(FormatD.ComponentLoader:Compon
 #### Create a component manager:
 
 ```typescript
+import { AbstractComponentManager } from "@packages/Application/FormatD.ComponentLoader/Resources/Private/TypeScript/AbstractComponentManager"
+
 export default class MyComponentManager extends AbstractComponentManager {
 	initialize(domSection: HTMLElement) {
 		console.log("Hello World")
