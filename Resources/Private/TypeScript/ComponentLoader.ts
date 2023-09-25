@@ -47,6 +47,8 @@ export class ComponentLoader {
 			}
 		}
 
+		// TODO: allow for registration of arbitrary reload reasons
+
 		await ComponentLoader.ListenOnInitializeReady(async () => {
 			await this.load(window.__ComponentLoaderComponentRegistry.components, document, ReloadReason.Ready);
 			await onInitializeCallback(document, ReloadReason.Ready);
