@@ -50,7 +50,7 @@ export default class MyComponentManager extends AbstractComponentManager {
 #### Include the corresponding files
 
 ```typescript
-import {componentLoader} from ".../Vendor.Package/Fusion/ComponentLoader";
+import {componentLoader} from "@packages/Application/FormatD.ComponentLoader/Resources/Private/TypeScript/ComponentLoader";
 
 componentLoader.addDefaultImport('Vendor.Website:MyComponent', () => import('../private/Fusion/MyComponent'));
 //...
