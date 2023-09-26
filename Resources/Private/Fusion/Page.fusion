@@ -1,6 +1,6 @@
 prototype(Neos.Neos:Page) {
     head {
         formatDComponentLoaderRegistry = FormatD.ComponentLoader:WindowComponentRegistry
-        formatDComponentLoaderRegistry.@position = 'end'
+        formatDComponentLoaderRegistry.@position = 'start'
     }
 }
