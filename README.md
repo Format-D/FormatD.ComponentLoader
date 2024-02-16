@@ -56,3 +56,12 @@ componentLoader.addDefaultImport('Vendor.Website:MyComponent', () => import('../
 //...
 componentLoader.initialize()
 ```
+
+The optional callback can be used to initialize custom js not managed by the component manager
+```typescript
+componentLoader.initialize(async (domSection, reason) => {
+	if (document.querySelector('body')) {
+		// add stuff here
+	}
+});
+```
