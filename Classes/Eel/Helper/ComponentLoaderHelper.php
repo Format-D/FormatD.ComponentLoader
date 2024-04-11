@@ -36,11 +36,11 @@ class ComponentLoaderHelper implements ProtectedContextAwareInterface
 		return str_replace($search, $rawMethod, $value);
 	}
 
-	public function isProduction(): boolean {
+	public function isProduction(): bool {
 		return $this->bootstrap->getContext()->isProduction();
 	}
 
-	public function isDevelopment(): boolean {
+	public function isDevelopment(): bool {
 		return $this->bootstrap->getContext()->isDevelopment();
 	}
 
