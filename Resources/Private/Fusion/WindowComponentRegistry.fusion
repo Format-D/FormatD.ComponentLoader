@@ -3,10 +3,9 @@ prototype(FormatD.ComponentLoader:WindowComponentRegistry) < prototype(Neos.Fusi
 	register = '###register###'
 	context = Neos.Fusion:DataStructure {
 		isBackend = '###isBackend###'
-		isProduction = ${false}
-		isDevelopment = ${true}
+        isProduction = ${FD.ComponentLoader.isProduction()}
+        isDevelopment = ${FD.ComponentLoader.isDevelopment()}
     }
-        
 
 	@process.stringifyToJson {
 		expression = ${Json.stringify(value)}
@@ -19,7 +18,7 @@ prototype(FormatD.ComponentLoader:WindowComponentRegistry) < prototype(Neos.Fusi
 	}
 
 	@process.replaceMethodMarkerContextIsBackend {
-		expression = ${FD.ComponentLoader.replaceMethodMarker(value, 'isBackend', '() => '+(documentNode.context.inBackend ? 'true' : 'false'))}
+		expression = ${FD.ComponentLoader.replaceMethodMarker(value, 'isBackend', '() => ' + (documentNode.context.inBackend ? 'true' : 'false'))}
 		@position = 'after replaceMethodMarkerRegister'
 	}
 

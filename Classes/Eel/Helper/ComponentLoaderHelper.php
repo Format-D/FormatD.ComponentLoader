@@ -3,12 +3,20 @@
 namespace FormatD\ComponentLoader\Eel\Helper;
 
 use Neos\Eel\ProtectedContextAwareInterface;
+use Neos\Flow\Core\Bootstrap;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * Helper with utilities
  */
 class ComponentLoaderHelper implements ProtectedContextAwareInterface
 {
+
+	/**
+	 * @Flow\Inject
+	 * @var Bootstrap
+	 */
+	protected $bootstrap;
 
 	/**
 	 * @throws \ReflectionException
@@ -26,6 +34,14 @@ class ComponentLoaderHelper implements ProtectedContextAwareInterface
 		$search = '"' . $markerIndicator . $markerName . $markerIndicator . '"';
 
 		return str_replace($search, $rawMethod, $value);
+	}
+
+	public function isProduction(): boolean {
+		return $this->bootstrap->getContext()->isProduction();
+	}
+
+	public function isDevelopment(): boolean {
+		return $this->bootstrap->getContext()->isDevelopment();
 	}
 
 	/**
